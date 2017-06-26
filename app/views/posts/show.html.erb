@@ -18,3 +18,11 @@ Link: <%= link_to @post.title, @post.url %>
 </p>
 
 <h4>Comments</h4>
+
+<%= link_to "Add a Comment", new_post_comment_url(@post) %>
+
+<% @post.comments.try(:each) do |comment| %>
+  <ul>
+    <li><%= comment.content %></li>
+  </ul>
+<% end %>
