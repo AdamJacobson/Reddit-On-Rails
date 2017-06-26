@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       login!(user)
       redirect_to subs_url
     else
-      flash[:errors] = "Invalid Login"
+      flash[:errors] = ["Invalid Login"]
       render :new
     end
   end

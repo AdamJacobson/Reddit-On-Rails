@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @subs = Sub.all
   end
 
   def create
@@ -24,7 +25,6 @@ class PostsController < ApplicationController
 
   def update
     @post = this_post
-
     if @post.update(post_params)
       redirect_to post_url(@post)
     else
@@ -50,7 +50,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :url, :content, :sub_id)
+    params.require(:post).permit(:title, :url, :content, sub_ids: [])
   end
 
   def require_author

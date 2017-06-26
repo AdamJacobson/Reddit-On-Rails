@@ -1,9 +1,15 @@
 
-<%= link_to "Posted in #{@post.sub.title}", sub_url(@post.sub) %>
 <%= link_to "Edit Post", edit_post_url(@post) %>
 
 <h2><%= @post.title %></h2>
 <h3> By: <%= @post.author.username %> </h3>
+
+<h3>Posted In:</h3>
+<% @post.subs.try(:each) do |sub| %>
+  <ul>
+    <li><%= link_to sub.title, sub_url(sub) %></li>
+  </ul>
+<% end %>
 
 Link: <%= link_to @post.title, @post.url %>
 
