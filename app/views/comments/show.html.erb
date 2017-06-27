@@ -2,6 +2,9 @@
 <p> <%= @comment.content %> </p>
 <br>
 
+<%= button_to "Upvote", comment_upvote_url %>
+<%= button_to "Downvote", comment_downvote_url %>
+
 <form action="<%= comments_url %>" method="post">
   <%= auth_token %>
   <input type="hidden" name="comment[parent_comment_id]" value="<%= @comment.id %>">

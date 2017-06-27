@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626222646) do
+ActiveRecord::Schema.define(version: 20170627002116) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content",           null: false
@@ -55,6 +55,15 @@ ActiveRecord::Schema.define(version: 20170626222646) do
     t.datetime "updated_at",      null: false
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
+  create_table "votes", force: :cascade do |t|
+    t.integer  "value"
+    t.integer  "votable_id"
+    t.integer  "votable_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["votable_id", "votable_type"], name: "index_votes_on_votable_id_and_votable_type", unique: true
   end
 
 end

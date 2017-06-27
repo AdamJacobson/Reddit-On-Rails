@@ -45,6 +45,18 @@ class PostsController < ApplicationController
     redirect_to sub_url(post.sub)
   end
 
+  def upvote
+    post = this_post
+    post.upvote
+    redirect_to post_url(post)
+  end
+
+  def downvote
+    post = this_post
+    post.downvote
+    redirect_to post_url(post)
+  end
+
   private
 
   def this_post

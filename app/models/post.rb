@@ -1,5 +1,7 @@
 class Post < ApplicationRecord
 
+  include Votable
+
   validates :title, :author, presence: true
   validates :subs, length: { minimum: 1, message: "Must be posted in at least 1 sub" }
 

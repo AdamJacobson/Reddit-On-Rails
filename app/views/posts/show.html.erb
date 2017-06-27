@@ -4,6 +4,9 @@
 <h2><%= @post.title %></h2>
 <h3> By: <%= @post.author.username %> </h3>
 
+<%= button_to "Upvote", post_upvote_url %>
+<%= button_to "Downvote", post_downvote_url %>
+
 <h3>Posted In:</h3>
 <% @post.subs.try(:each) do |sub| %>
   <ul>
