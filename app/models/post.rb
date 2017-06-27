@@ -11,8 +11,16 @@ class Post < ApplicationRecord
 
   has_many :comments
 
-  def top_level_comments
-    self.comments.where(parent_comment_id: nil)
+  # def top_level_comments
+  #   self.comments.where(parent_comment_id: nil)
+  # end
+
+  def comments_by_parent_id
+    grouped = Hash.new {|hash, key| hash[key] = Array.new }
+    self.comments.each do |comment|
+      grouped[comment.parent_comment_id] << comment
+    end
+    grouped
   end
 
 end

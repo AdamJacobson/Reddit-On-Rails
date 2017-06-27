@@ -11,6 +11,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.author = current_user
+
     if @post.save
       redirect_to post_url(@post)
     else
@@ -35,6 +36,7 @@ class PostsController < ApplicationController
 
   def show
     @post = this_post
+    @all_comments = @post.comments_by_parent_id
   end
 
   def destroy

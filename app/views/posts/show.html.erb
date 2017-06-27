@@ -21,6 +21,6 @@ Link: <%= link_to @post.title, @post.url %>
 
 <%= link_to "Add a Comment", new_post_comment_url(@post) %>
 
-<% @post.top_level_comments.try(:each) do |top_comment| %>
-  <%= render 'comments/comment', comment: top_comment %>
+<% @all_comments[nil].try(:each) do |comment| %>
+  <%= render 'comments/comment', comment: comment, all_comments: @all_comments  %>
 <% end %>
